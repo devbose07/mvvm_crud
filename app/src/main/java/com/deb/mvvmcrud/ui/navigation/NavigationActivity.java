@@ -37,10 +37,11 @@ public class NavigationActivity extends BaseActivity<ActivityNavigationBinding,N
 
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
-    @Inject
-    ViewModelProvider.Factory mViewModelFactory;
+    //@Inject
+    //ViewModelProvider.Factory mViewModelFactory;
     private ActivityNavigationBinding mActivityNavigationBinding;
-    private NavigationViewModel mNavigationViewModel;
+    @Inject
+     NavigationViewModel mNavigationViewModel;
 
     private DrawerLayout mDrawer;
     private NavigationView mNavigationView;
@@ -58,7 +59,7 @@ public class NavigationActivity extends BaseActivity<ActivityNavigationBinding,N
 
     @Override
     public NavigationViewModel getViewModel() {
-        mNavigationViewModel = ViewModelProviders.of(this, mViewModelFactory).get(NavigationViewModel.class);
+        //mNavigationViewModel = ViewModelProviders.of(this, mViewModelFactory).get(NavigationViewModel.class);
         return mNavigationViewModel;
     }
 

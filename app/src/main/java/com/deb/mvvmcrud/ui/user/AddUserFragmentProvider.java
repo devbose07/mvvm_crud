@@ -9,5 +9,5 @@ Created by Deb
 @Module
 public abstract class AddUserFragmentProvider {
     @ContributesAndroidInjector(modules = UserModule.class)
-    abstract AddUserFragment provideAboutFragmentFactory();
+    abstract AddUserFragment provideAddUserFragmentFactory();
 }

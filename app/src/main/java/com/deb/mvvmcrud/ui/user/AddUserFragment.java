@@ -36,7 +36,7 @@ public class AddUserFragment extends BaseFragment<FragmentAddUserBinding,UserVie
     LinearLayoutManager mLayoutManager;
 
     FragmentAddUserBinding mFragmentAddUserBinding;
-
+    @Inject
     UserViewModel mUserModel;
     @Override
     public int getBindingVariable() {
@@ -50,7 +50,7 @@ public class AddUserFragment extends BaseFragment<FragmentAddUserBinding,UserVie
 
     @Override
     public UserViewModel getViewModel() {
-        mUserModel= ViewModelProviders.of(this,mViewModelFactory).get(UserViewModel.class);
+        //mUserModel= ViewModelProviders.of(this,mViewModelFactory).get(UserViewModel.class);
         return mUserModel;
     }
 

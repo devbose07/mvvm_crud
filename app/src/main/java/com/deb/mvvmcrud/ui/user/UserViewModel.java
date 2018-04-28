@@ -14,24 +14,28 @@ Created by Deb
 */
 public class UserViewModel extends BaseViewModel<AddUserNavigator> {
     public static final String TAG = UserViewModel.class.getName();
-    private final ObservableField<String> username = new ObservableField<>();
+    public ObservableField<String> username = new ObservableField<>();
     private final MutableLiveData<List<String>> userListData=new MutableLiveData<>();
 
     public UserViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }
 
-    public ObservableField<String> getUsername() {
+    /*public ObservableField<String> getUsername() {
         return username;
     }
+
+    public void setUsername(ObservableField<String> username) {
+        this.username = username;
+    }*/
 
     public MutableLiveData<List<String>> getUserListData() {
         return userListData;
     }
 
 
-    void saveUser(){
-        Log.i(UserViewModel.TAG,"Username" +username);
+    public void saveUser(){
+        Log.i(UserViewModel.TAG,"Username:" +username.get());
         //return 0L;
     }
 }
