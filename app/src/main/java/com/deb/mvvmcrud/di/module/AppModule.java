@@ -19,6 +19,7 @@ package com.deb.mvvmcrud.di.module;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.util.Log;
 
 import com.deb.mvvmcrud.data.db.AppDatabase;
 import com.deb.mvvmcrud.di.DatabaseInfo;
@@ -46,7 +47,8 @@ public class AppModule {
 
     @Provides
     @Singleton
-    AppDatabase provideAppDatabase(@DatabaseInfo String dbName, Context context) {
+    public AppDatabase provideAppDatabase(@DatabaseInfo String dbName, Context context) {
+        Log.i("AppModule","Db created");
         return Room.databaseBuilder(context, AppDatabase.class, dbName).fallbackToDestructiveMigration()
                 .build();
     }

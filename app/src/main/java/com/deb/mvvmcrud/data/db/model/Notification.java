@@ -182,5 +182,43 @@ public class Notification {
                 '}';
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public void setActionPath(String actionPath) {
+        this.actionPath = actionPath;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setAddedOn(String addedOn) {
+        this.addedOn = addedOn;
+    }
+
+    public void setDeletedOn(String deletedOn) {
+        this.deletedOn = deletedOn;
+    }
+
+    public void setDeletedBy(Integer deletedBy) {
+        this.deletedBy = deletedBy;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
 }
