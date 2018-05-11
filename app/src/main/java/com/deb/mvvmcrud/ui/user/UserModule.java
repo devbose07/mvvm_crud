@@ -1,10 +1,8 @@
 package com.deb.mvvmcrud.ui.user;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.support.v7.widget.LinearLayoutManager;
 
-import com.deb.mvvmcrud.ViewModelProviderFactory;
-import com.deb.mvvmcrud.ui.navigation.NavigationViewModel;
+import com.deb.mvvmcrud.data.manager.DataManager;
 import com.deb.mvvmcrud.utils.rx.SchedulerProvider;
 
 import dagger.Module;
@@ -21,8 +19,8 @@ public class UserModule {
         return new ViewModelProviderFactory<>(userViewModel);
     }*/
     @Provides
-    UserViewModel provideUserViewModel( SchedulerProvider schedulerProvider) {
-        return new UserViewModel( schedulerProvider);
+    UserViewModel provideUserViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
+        return new UserViewModel(dataManager, schedulerProvider);
     }
 
     @Provides

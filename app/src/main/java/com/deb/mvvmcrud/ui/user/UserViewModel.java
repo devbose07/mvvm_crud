@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.deb.mvvmcrud.data.db.helper.NotificationDbHelper;
 import com.deb.mvvmcrud.data.db.model.Notification;
-import com.deb.mvvmcrud.data.manager.NotificationManager;
+import com.deb.mvvmcrud.data.manager.DataManager;
 import com.deb.mvvmcrud.ui.base.BaseViewModel;
 import com.deb.mvvmcrud.utils.rx.SchedulerProvider;
 
@@ -17,7 +17,7 @@ import javax.inject.Inject;
 /**
 Created by Deb
 */
-public class UserViewModel extends BaseViewModel<AddUserNavigator> {
+public class UserViewModel extends BaseViewModel<AddUserNavigator,DataManager> {
     public static final String TAG = UserViewModel.class.getName();
     public ObservableField<String> username = new ObservableField<>();
     private final MutableLiveData<List<String>> userListData=new MutableLiveData<>();
@@ -25,8 +25,8 @@ public class UserViewModel extends BaseViewModel<AddUserNavigator> {
     @Inject
     NotificationDbHelper mNotificationDbHelper;
 
-    public UserViewModel(SchedulerProvider schedulerProvider) {
-        super(schedulerProvider);
+    public UserViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
+        super(dataManager,schedulerProvider);
         username.set("set from model");
     }
 
@@ -47,7 +47,10 @@ public class UserViewModel extends BaseViewModel<AddUserNavigator> {
         Log.i(UserViewModel.TAG,"Username:" +username.get());
         Notification notification=new Notification();
         notification.setMessage(username.get());
-        mNotificationDbHelper.saveNotification(notification);
+        getDataManager().saveNotification(notification);
+        username.set(username.get()+" update after save");
+        //mNotificationDbHelper.saveNotification(notification);
         //return 0L;
+
     }
 }

@@ -9,15 +9,16 @@ import io.reactivex.disposables.CompositeDisposable;
 /**
 Created by Deb
 */
-public abstract class BaseViewModel<N> extends ViewModel {
+public abstract class BaseViewModel<N,D> extends ViewModel {
 
     private final SchedulerProvider mSchedulerProvider;
     private CompositeDisposable mCompositeDisposable;
     private N mNavigator;
+    private final D mDataManager;
 
-    public BaseViewModel(
+    public BaseViewModel(D dataManager,
                          SchedulerProvider schedulerProvider) {
-
+        this.mDataManager = dataManager;
         this.mSchedulerProvider = schedulerProvider;
         this.mCompositeDisposable = new CompositeDisposable();
     }
@@ -27,7 +28,9 @@ public abstract class BaseViewModel<N> extends ViewModel {
         mCompositeDisposable.dispose();
         super.onCleared();
     }
-
+    public D getDataManager() {
+        return mDataManager;
+    }
     public N getNavigator() {
         return mNavigator;
     }

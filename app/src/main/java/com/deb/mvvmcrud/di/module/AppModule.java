@@ -17,11 +17,16 @@
 package com.deb.mvvmcrud.di.module;
 
 import android.app.Application;
+import android.app.NotificationManager;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.util.Log;
 
 import com.deb.mvvmcrud.data.db.AppDatabase;
+import com.deb.mvvmcrud.data.db.helper.NotificationDbHelper;
+import com.deb.mvvmcrud.data.db.helper.NotificationDbHelperImpl;
+import com.deb.mvvmcrud.data.manager.AppDataManager;
+import com.deb.mvvmcrud.data.manager.DataManager;
 import com.deb.mvvmcrud.di.DatabaseInfo;
 import com.deb.mvvmcrud.di.PreferenceInfo;
 import com.deb.mvvmcrud.utils.AppConstants;
@@ -66,6 +71,17 @@ public class AppModule {
         return AppConstants.DB_NAME;
     }
 
+    @Provides
+    @Singleton
+    DataManager provideNotificationManager(AppDataManager appDataManager) {
+        return appDataManager;
+    }
+
+    @Provides
+    @Singleton
+    NotificationDbHelper provideDbHelper(NotificationDbHelperImpl appDbHelper) {
+        return appDbHelper;
+    }
     @Provides
     @Singleton
     Gson provideGson() {

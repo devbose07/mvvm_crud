@@ -3,7 +3,7 @@ package com.deb.mvvmcrud.ui.navigation;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.deb.mvvmcrud.ViewModelProviderFactory;
-import com.deb.mvvmcrud.data.manager.NotificationManager;
+import com.deb.mvvmcrud.data.manager.DataManager;
 import com.deb.mvvmcrud.utils.rx.SchedulerProvider;
 
 import dagger.Module;
@@ -24,7 +24,7 @@ public class NavigationActivityModule {
        return new ViewModelProviderFactory<>(navigationViewModel);
    }
     @Provides
-    NavigationViewModel provideNavigationViewModel( SchedulerProvider schedulerProvider) {
-        return new NavigationViewModel( schedulerProvider);
+    NavigationViewModel provideNavigationViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
+        return new NavigationViewModel( dataManager,schedulerProvider);
     }
 }

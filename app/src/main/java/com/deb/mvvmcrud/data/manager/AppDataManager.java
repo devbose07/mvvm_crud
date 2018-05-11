@@ -18,7 +18,7 @@ Created by Deb
 */
 
 @Singleton
-public class NotificationManagerImpl implements NotificationManager {
+public class AppDataManager implements DataManager {
 
     private final Context mContext;
 
@@ -27,7 +27,7 @@ public class NotificationManagerImpl implements NotificationManager {
     private final Gson mGson;
 
     @Inject
-    public NotificationManagerImpl(Context context, NotificationDbHelper dbHelper,  Gson gson) {
+    public AppDataManager(Context context, NotificationDbHelper dbHelper, Gson gson) {
         mContext = context;
         mDbHelper = dbHelper;
         mGson = gson;

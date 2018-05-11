@@ -1,6 +1,8 @@
 package com.deb.mvvmcrud.data.db.helper;
 
 
+import android.util.Log;
+
 import com.deb.mvvmcrud.data.db.AppDatabase;
 import com.deb.mvvmcrud.data.db.model.Notification;
 
@@ -18,6 +20,7 @@ Created by Deb
 @Singleton
 public class NotificationDbHelperImpl implements NotificationDbHelper {
 
+    private static final String TAG = NotificationDbHelperImpl.class.getName();
     private final AppDatabase mAppDatabase;
 
     @Inject
@@ -30,7 +33,9 @@ public class NotificationDbHelperImpl implements NotificationDbHelper {
         return Observable.fromCallable(new Callable<Long>() {
             @Override
             public Long call() throws Exception {
-                return mAppDatabase.notificationDao().addNotification1(notification);
+                Long id=mAppDatabase.notificationDao().addNotification1(notification);
+                Log.i(TAG,"ID "+id);
+                return id;
 
             }
         });

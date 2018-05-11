@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.databinding.ObservableField;
 
 import com.deb.mvvmcrud.data.db.model.Notification;
-import com.deb.mvvmcrud.data.manager.NotificationManager;
+import com.deb.mvvmcrud.data.manager.DataManager;
 import com.deb.mvvmcrud.ui.base.BaseViewModel;
 import com.deb.mvvmcrud.utils.rx.SchedulerProvider;
 
@@ -13,7 +13,7 @@ import java.util.List;
 /**
 Created by Deb
 */
-public class NavigationViewModel extends BaseViewModel<Navigator> {
+public class NavigationViewModel extends BaseViewModel<Navigator,DataManager> {
 
     private final ObservableField<String> txtHello = new ObservableField<>();
     //private final NotificationManager mdataManager;
@@ -28,8 +28,8 @@ public class NavigationViewModel extends BaseViewModel<Navigator> {
 
     }*/
 
-    public NavigationViewModel( SchedulerProvider schedulerProvider) {
-        super(schedulerProvider);
+    public NavigationViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
+        super(dataManager,schedulerProvider);
 
         notificationdData = new MutableLiveData<>();
         //loadNotification();
