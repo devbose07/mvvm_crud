@@ -94,6 +94,7 @@ public class NavigationActivity extends BaseActivity<ActivityNavigationBinding,N
         setUp();
         mNavigationViewModel.updateTxtHello("Wellcome to dragger and RX");
         mNavigationView.setNavigationItemSelectedListener(this);
+        mNavigationViewModel.saveUser();
     }
 
     private void setUp() {

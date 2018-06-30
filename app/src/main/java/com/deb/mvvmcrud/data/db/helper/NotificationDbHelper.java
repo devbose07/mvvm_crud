@@ -9,7 +9,7 @@ import io.reactivex.Observable;
 /**
 Created by Deb
 */
-public interface NotificationDbHelper {
+public interface NotificationDbHelper extends BaseDBHelper {
     Observable<Long> saveNotification(Notification notification);
     Observable<List<Notification>> getAllNotification();
 }

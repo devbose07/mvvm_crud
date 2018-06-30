@@ -20,13 +20,18 @@ import android.app.Application;
 import android.app.NotificationManager;
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 
 import com.deb.mvvmcrud.data.db.AppDatabase;
 import com.deb.mvvmcrud.data.db.helper.NotificationDbHelper;
 import com.deb.mvvmcrud.data.db.helper.NotificationDbHelperImpl;
+import com.deb.mvvmcrud.data.db.helper.UserDBHelper;
+import com.deb.mvvmcrud.data.db.helper.UserDBHelperImpl;
 import com.deb.mvvmcrud.data.manager.AppDataManager;
 import com.deb.mvvmcrud.data.manager.DataManager;
+import com.deb.mvvmcrud.data.manager.UserDataManager;
+import com.deb.mvvmcrud.data.manager.UserDataManagerImpl;
 import com.deb.mvvmcrud.di.DatabaseInfo;
 import com.deb.mvvmcrud.di.PreferenceInfo;
 import com.deb.mvvmcrud.utils.AppConstants;
@@ -48,14 +53,21 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-
-
     @Provides
     @Singleton
-    public AppDatabase provideAppDatabase(@DatabaseInfo String dbName, Context context) {
-        Log.i("AppModule","Db created");
+    AppDatabase provideAppDatabase(@DatabaseInfo String dbName, Context context) {
+        //Log.i("AppModule","Db created: "+dbName);
         return Room.databaseBuilder(context, AppDatabase.class, dbName).fallbackToDestructiveMigration()
                 .build();
+        //Log.i("AppModule","Db created: "+db);
+        //return AppDatabase.getAppDatabse(context);
+    }
+    @Provides
+    @Singleton
+    Resources provideResources(Context context)
+    {
+
+        return context.getResources();
     }
 
     @Provides
@@ -79,8 +91,20 @@ public class AppModule {
 
     @Provides
     @Singleton
-    NotificationDbHelper provideDbHelper(NotificationDbHelperImpl appDbHelper) {
+    NotificationDbHelper provideNotificationDbHelper(NotificationDbHelperImpl appDbHelper) {
         return appDbHelper;
+    }
+
+    @Provides
+    @Singleton
+    UserDBHelper provideUserDBHelper(UserDBHelperImpl appDbHelper) {
+        return appDbHelper;
+    }
+
+    @Provides
+    @Singleton
+    UserDataManager provideUserDataManager(UserDataManagerImpl appDataManager) {
+        return appDataManager;
     }
     @Provides
     @Singleton

@@ -21,6 +21,7 @@ Created by Deb
 public class NotificationDbHelperImpl implements NotificationDbHelper {
 
     private static final String TAG = NotificationDbHelperImpl.class.getName();
+
     private final AppDatabase mAppDatabase;
 
     @Inject
@@ -30,6 +31,7 @@ public class NotificationDbHelperImpl implements NotificationDbHelper {
 
     @Override
     public Observable<Long> saveNotification(final Notification notification) {
+        Log.i("mAppDatabase","mAppDatabase :"+mAppDatabase);
         return Observable.fromCallable(new Callable<Long>() {
             @Override
             public Long call() throws Exception {

@@ -17,19 +17,39 @@
 package com.deb.mvvmcrud.data.db;
 
 import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
+import android.content.Context;
 
 import com.deb.mvvmcrud.data.db.dao.NotificationDao;
+import com.deb.mvvmcrud.data.db.dao.UserDao;
+import com.deb.mvvmcrud.data.db.model.DateRoomConverter;
 import com.deb.mvvmcrud.data.db.model.Notification;
+import com.deb.mvvmcrud.data.db.model.TestModel;
+import com.deb.mvvmcrud.data.db.model.TimestampConverter;
+import com.deb.mvvmcrud.data.db.model.User;
+import com.deb.mvvmcrud.utils.AppConstants;
 
 
 /**
  * Created by deb
  */
 
-@Database(entities = {Notification.class}, version = 2)
+@Database(entities = {Notification.class,User.class,TestModel.class}, version = 2)
+@TypeConverters({DateRoomConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
+    public static AppDatabase instance=null;
+
+    public static AppDatabase getAppDatabse(Context context)
+    {
+        return Room.databaseBuilder(context, AppDatabase.class, AppConstants.DB_NAME).fallbackToDestructiveMigration()
+                .build();
+    }
+
     public abstract NotificationDao notificationDao();
+
+    public abstract UserDao userDao();
 
 }

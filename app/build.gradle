@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -40,7 +41,7 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle"
 
     // Room Database
-    implementation "android.arch.persistence.room:runtime:$rootProject.roomDatabase"
+    //implementation "android.arch.persistence.room:runtime:$rootProject.roomDatabase"
     implementation "android.arch.persistence.room:rxjava2:$rootProject.roomDatabase"
     annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomDatabase"
 
